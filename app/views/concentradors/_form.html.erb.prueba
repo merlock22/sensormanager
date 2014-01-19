@@ -1,0 +1,57 @@
+<%= form_for(@concentrador) do |f| %>
+  <% if @concentrador.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@concentrador.errors.count, "error") %> prohibited this concentrador from being saved:</h2>
+
+      <ul>
+      <% @concentrador.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :categoria_equipo %><br>
+    <%= f.select :categoria_equipo, categoria_equipo.all { |e| [e.nombre, e.id]  } %>
+  </div>
+  <div class="field">
+    <%= f.label :nombre %><br>
+    <%= f.text_field :nombre %>
+  </div>
+  <div class="field">
+    <%= f.label :descripcion %><br>
+    <%= f.text_field :descripcion %>
+  </div>
+  <div class="field">
+    <%= f.label :estado %><br>
+    <%= f.text_field :estado %>
+  </div>
+  <div class="field">
+    <%= f.label :gis_latitud %><br>
+    <%= f.text_field :gis_latitud %>
+  </div>
+  <div class="field">
+    <%= f.label :gis_longitud %><br>
+    <%= f.text_field :gis_longitud %>
+  </div>
+  <div class="field">
+    <%= f.label :mac_address %><br>
+    <%= f.text_field :mac_address %>
+  </div>
+  <div class="field">
+    <%= f.label :numero_serie %><br>
+    <%= f.text_field :numero_serie %>
+  </div>
+  <div class="field">
+    <%= f.label :ip_address %><br>
+    <%= f.text_field :ip_address %>
+  </div>
+  <div class="field">
+    <%= f.label :ip_port %><br>
+    <%= f.text_field :ip_port %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

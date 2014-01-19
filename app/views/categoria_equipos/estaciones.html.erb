@@ -1,0 +1,49 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Nombre:</strong>
+  <%= @categoria_equipo.nombre %>
+</p>
+
+<p>
+  <strong>Descripcion:</strong>
+  <%= @categoria_equipo.descripcion %>
+</p>
+
+<h1>
+  Estaciones
+</h1>
+<table>
+  <thead>
+    <tr>
+      <th>Nombre</th>
+      <th>Descripcion</th>
+      <th>Estado</th>
+      <th>Gis latitud</th>
+      <th>Gis longitud</th>
+      <th>Mac address</th>
+      <th>Numero serie</th>
+      <th>Ip address</th>
+      <th>Ip port</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @categoria_equipo.concentradors.each do |concentrador| %>
+      <tr>
+        <td><%= concentrador.nombre %></td>
+        <td><%= concentrador.descripcion %></td>
+        <td><%= concentrador.estado %></td>
+        <td><%= concentrador.gis_latitud %></td>
+        <td><%= concentrador.gis_longitud %></td>
+        <td><%= concentrador.mac_address %></td>
+        <td><%= concentrador.numero_serie %></td>
+        <td><%= concentrador.ip_address %></td>
+        <td><%= concentrador.ip_port %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<%= link_to 'Edit', edit_categoria_equipo_path(@categoria_equipo) %> |
+<%= link_to 'Back', categoria_equipos_path %>

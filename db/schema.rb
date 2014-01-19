@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140103192802) do
+ActiveRecord::Schema.define(version: 20140115104028) do
 
   create_table "categoria_equipos", force: true do |t|
     t.string   "nombre"
@@ -21,16 +21,16 @@ ActiveRecord::Schema.define(version: 20140103192802) do
   end
 
   create_table "concentradors", force: true do |t|
-    t.integer  "categoria_equipo_id"
-    t.string   "nombre"
-    t.string   "descripcion"
-    t.string   "estado"
-    t.float    "gis_latitud"
-    t.float    "gis_longitud"
+    t.integer  "categoria_equipo_id", default: 1,    null: false
+    t.string   "nombre",                             null: false
+    t.string   "descripcion",         default: "--"
+    t.string   "estado",                             null: false
+    t.float    "gis_latitud",         default: 0.0
+    t.float    "gis_longitud",        default: 0.0
     t.string   "mac_address"
     t.string   "numero_serie"
     t.string   "ip_address"
-    t.integer  "ip_port"
+    t.integer  "ip_port",             default: 80
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -38,9 +38,9 @@ ActiveRecord::Schema.define(version: 20140103192802) do
   add_index "concentradors", ["categoria_equipo_id"], name: "index_concentradors_on_categoria_equipo_id", using: :btree
 
   create_table "medidas", force: true do |t|
-    t.integer  "sensor_id"
-    t.datetime "fecha"
-    t.float    "valor"
+    t.integer  "sensor_id",  default: 1,   null: false
+    t.date     "fecha",                    null: false
+    t.float    "valor",      default: 0.0
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -48,12 +48,12 @@ ActiveRecord::Schema.define(version: 20140103192802) do
   add_index "medidas", ["sensor_id"], name: "index_medidas_on_sensor_id", using: :btree
 
   create_table "sensors", force: true do |t|
-    t.integer  "concentrador_id"
-    t.string   "nombre"
-    t.string   "descripcion"
+    t.integer  "concentrador_id", default: 1,    null: false
+    t.string   "nombre",                         null: false
+    t.string   "descripcion",     default: "--"
     t.string   "estado"
     t.string   "parametro"
-    t.float    "valor"
+    t.float    "valor",           default: 0.0
     t.string   "uds"
     t.datetime "created_at"
     t.datetime "updated_at"
